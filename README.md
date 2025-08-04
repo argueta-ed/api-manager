@@ -4,7 +4,6 @@ Sigue estos pasos para preparar el entorno de desarrollo:
 ## 1. Clonar el repositorio
 ```bash
 git clone https://github.com/tu-usuario/tu-repositorio.git
-cd tu-repositorio
 ```
 ## 2. Instalar dependencias con Composer
 Este proyecto utiliza Spatie Laravel Permission, por lo que es necesario instalar todas las dependencias antes de continuar:
@@ -31,11 +30,37 @@ Luego genera la clave de la aplicación:
 php artisan key:generate
 ```
 ## 4. Ejecutar migraciones y seeders
-Este paso creará las tablas necesarias y poblará la base de datos con datos iniciales como roles y permisos (si tus seeders los incluyen):
+Este paso creará las tablas necesarias y poblará la base de datos con datos iniciales como roles y permisos:
+
+antes de ejecutar las migraciones asegurate de colocar correctamente las credenciales de tu base de datos
+
+```bash
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=api_manager
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
 ```bash
 php artisan migrate --seed
 ```
+
+Se han añadido dos usuarios de prueba en el seeder para dos diferentes roles "administrado y revisor"
+
+Rol de administrador
+```bash
+usuario: admin@admin.com
+contraseña: admin
+```
+
+Rol de revisor
+```bash
+usuario: revisor@revisor.com
+contraseña: revisor
+```
+
 ## 5. Ejecutar el servidor de desarrollo
 Puedes iniciar el servidor con:
 
@@ -43,6 +68,8 @@ Puedes iniciar el servidor con:
 php artisan serve
 ```
 Esto iniciará la aplicación en http://localhost:8000.
+
+
 
 # ✅ Ejecutar pruebas
 Este proyecto incluye pruebas automatizadas. Para ejecutarlas, usa:
